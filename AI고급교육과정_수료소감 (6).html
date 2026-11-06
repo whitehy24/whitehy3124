@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 고급교육과정 수료 소감</title>
+  <style>
+    :root {
+      --primary: #6c5ce7;
+      --primary-dark: #5145cd;
+      --pink: #ff7a90;
+      --mint: #2ec4b6;
+      --yellow: #ffd166;
+      --ink: #252940;
+      --muted: #666d86;
+      --line: #e2e6f4;
+      --panel: rgba(255, 255, 255, 0.92);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 36px 20px;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      color: var(--ink);
+      font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo",
+        "Malgun Gothic", sans-serif;
+      background:
+        radial-gradient(circle at 10% 15%, rgba(255, 209, 102, 0.28), transparent 22%),
+        radial-gradient(circle at 88% 12%, rgba(108, 92, 231, 0.23), transparent 24%),
+        radial-gradient(circle at 85% 88%, rgba(46, 196, 182, 0.20), transparent 24%),
+        linear-gradient(135deg, #f9faff 0%, #f1f3ff 48%, #fff9fb 100%);
+    }
+
+    .page {
+      position: relative;
+      width: min(1120px, 100%);
+      min-height: 660px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      padding: 58px;
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 34px;
+      background: rgba(255,255,255,0.72);
+      box-shadow: 0 30px 80px rgba(71, 65, 130, 0.18);
+      backdrop-filter: blur(14px);
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 8px;
+      background: linear-gradient(90deg, var(--primary), var(--pink), var(--yellow), var(--mint));
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .badge {
+      width: fit-content;
+      margin-bottom: 22px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      color: var(--primary-dark);
+      background: #eeeaff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 57px);
+      line-height: 1.18;
+      letter-spacing: -0.055em;
+    }
+
+    h1 strong {
+      color: var(--primary);
+    }
+
+    .subtitle {
+      margin: 20px 0 28px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+
+    .message {
+      position: relative;
+      padding: 28px 28px 26px 32px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      box-shadow: 0 14px 38px rgba(69, 72, 116, 0.10);
+    }
+
+    .message::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      bottom: 22px;
+      width: 6px;
+      border-radius: 0 8px 8px 0;
+      background: var(--primary);
+    }
+
+    .message p {
+      margin: 0;
+      color: #4f566f;
+      font-size: 16px;
+      line-height: 1.95;
+      word-break: keep-all;
+    }
+
+    .message p + p {
+      margin-top: 13px;
+    }
+
+    .message strong {
+      color: var(--ink);
+      background: linear-gradient(transparent 65%, rgba(255, 209, 102, 0.48) 0);
+    }
+
+    .signature {
+      margin-top: 18px;
+      color: var(--primary-dark);
+      font-size: 14px;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .visual {
+      position: relative;
+      min-height: 510px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #dfe3fb;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 38%, #ffffff 0 25%, transparent 26%),
+        linear-gradient(160deg, #eef0ff, #f9f5ff 58%, #e9fbf8);
+      overflow: hidden;
+    }
+
+    .visual-title {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      right: 0;
+      color: var(--primary-dark);
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
+    .robot {
+      position: relative;
+      width: 220px;
+      height: 250px;
+      margin-top: 15px;
+    }
+
+    .antenna {
+      position: absolute;
+      top: 0;
+      left: 107px;
+      width: 6px;
+      height: 38px;
+      border-radius: 5px;
+      background: var(--primary);
+    }
+
+    .antenna::before {
+      content: "";
+      position: absolute;
+      top: -13px;
+      left: -8px;
+      width: 22px;
+      height: 22px;
+      border: 4px solid var(--primary);
+      border-radius: 50%;
+      background: var(--pink);
+    }
+
+    .head {
+      position: absolute;
+      top: 36px;
+      left: 15px;
+      width: 190px;
+      height: 145px;
+      border: 6px solid var(--primary);
+      border-radius: 38px;
+      background: #fff;
+      box-shadow: 0 18px 30px rgba(87, 76, 175, 0.18);
+    }
+
+    .eye {
+      position: absolute;
+      top: 43px;
+      width: 26px;
+      height: 31px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .eye.left { left: 45px; }
+    .eye.right { right: 45px; }
+
+    .smile {
+      position: absolute;
+      left: 65px;
+      bottom: 28px;
+      width: 60px;
+      height: 30px;
+      border-bottom: 7px solid var(--pink);
+      border-radius: 0 0 60px 60px;
+    }
+
+    .arm {
+      position: absolute;
+      top: 118px;
+      width: 73px;
+      height: 7px;
+      border-radius: 7px;
+      background: var(--primary);
+    }
+
+    .arm::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      width: 27px;
+      height: 27px;
+      border: 4px solid var(--primary);
+      border-radius: 50%;
+      background: var(--yellow);
+    }
+
+    .arm.left {
+      left: -42px;
+      transform: rotate(-28deg);
+    }
+
+    .arm.left::after { left: -8px; }
+
+    .arm.right {
+      right: -42px;
+      transform: rotate(28deg);
+    }
+
+    .arm.right::after { right: -8px; }
+
+    .certificate {
+      position: absolute;
+      left: 43px;
+      top: 166px;
+      width: 135px;
+      height: 79px;
+      display: grid;
+      place-items: center;
+      border: 4px solid var(--primary);
+      border-radius: 13px;
+      color: var(--primary-dark);
+      background: #dfe4ff;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 1.25;
+      text-align: center;
+      transform: rotate(-2deg);
+    }
+
+    .ribbon {
+      position: absolute;
+      right: 9px;
+      bottom: -13px;
+      width: 31px;
+      height: 31px;
+      border: 5px solid #e8a900;
+      border-radius: 50%;
+      background: var(--yellow);
+    }
+
+    .caption {
+      position: absolute;
+      right: 28px;
+      bottom: 26px;
+      left: 28px;
+      padding: 13px 16px;
+      border: 1px solid rgba(108,92,231,0.18);
+      border-radius: 15px;
+      color: #514b72;
+      background: rgba(255,255,255,0.82);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 27px;
+      border-radius: 3px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .c1 { top: 82px; left: 45px; background: var(--yellow); transform: rotate(24deg); }
+    .c2 { top: 120px; right: 42px; background: var(--pink); transform: rotate(-25deg); animation-delay: .4s; }
+    .c3 { top: 210px; left: 35px; background: var(--mint); transform: rotate(40deg); animation-delay: .8s; }
+    .c4 { top: 255px; right: 31px; background: var(--primary); transform: rotate(18deg); animation-delay: 1.2s; }
+    .c5 { bottom: 115px; left: 62px; background: var(--pink); transform: rotate(-35deg); animation-delay: .6s; }
+
+    .sparkle {
+      position: absolute;
+      color: var(--yellow);
+      font-size: 29px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .s1 { top: 82px; right: 90px; }
+    .s2 { bottom: 125px; right: 70px; color: var(--mint); animation-delay: .7s; }
+
+    footer {
+      position: absolute;
+      left: 58px;
+      bottom: 25px;
+      color: #9298ad;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    @keyframes float {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -9px; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1) rotate(0); opacity: .75; }
+      50% { transform: scale(1.22) rotate(12deg); opacity: 1; }
+    }
+
+    @media (max-width: 850px) {
+      body { padding: 18px; }
+
+      .page {
+        grid-template-columns: 1fr;
+        padding: 42px 25px 75px;
+        border-radius: 25px;
+      }
+
+      .visual {
+        min-height: 470px;
+      }
+
+      footer {
+        left: 26px;
+        bottom: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="content">
+      <div class="badge">🎉 AI ADVANCED COURSE · COMPLETION</div>
+
+      <h1>
+        잘하지는 못했지만,<br />
+        <strong>끝까지 해냈습니다.</strong>
+      </h1>
+
+      <p class="subtitle">
+        완벽한 결과보다 포기하지 않은 도전에 의미를 두며,<br />
+        AI 고급교육과정의 마지막 페이지를 마무리합니다.
+      </p>
+
+      <article class="message" aria-label="과정 소감">
+        <p>
+          솔직히 저는 고급 과정을 능숙하게 따라가기보다
+          <strong>매 순간 겨우 따라가는 수준</strong>이었습니다.
+          그래서 결과물의 완성도가 높지는 않았고,
+          부족함을 많이 느끼기도 했습니다.
+        </p>
+        <p>
+          하지만 어렵다는 이유로 포기하지 않고 계속 시도했습니다.
+          이번 과정에서 가장 의미 있는 성과는 완벽한 결과물이 아니라,
+          <strong>새로운 분야에 도전하고 무사히 끝까지 완주했다는 것</strong>입니다.
+        </p>
+        <p>
+          부족했기에 더 많이 배울 수 있었고,
+          끝까지 해냈기에 다음 도전을 시작할 용기도 얻었습니다.
+          오늘은 잘한 결과보다 포기하지 않은 저의 도전과 완주를 축하하고 싶습니다.
+        </p>
+
+        <div class="signature">— AI 고급교육과정을 마치며</div>
+      </article>
+    </section>
+
+    <section class="visual" aria-label="수료를 축하하는 AI 로봇 일러스트">
+      <div class="visual-title">CHALLENGE · LEARNING · COMPLETION</div>
+
+      <i class="confetti c1"></i>
+      <i class="confetti c2"></i>
+      <i class="confetti c3"></i>
+      <i class="confetti c4"></i>
+      <i class="confetti c5"></i>
+      <span class="sparkle s1">✦</span>
+      <span class="sparkle s2">✦</span>
+
+      <div class="robot">
+        <div class="antenna"></div>
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+
+        <div class="head">
+          <span class="eye left"></span>
+          <span class="eye right"></span>
+          <span class="smile"></span>
+        </div>
+
+        <div class="certificate">
+          AI 과정<br />완주!
+          <span class="ribbon"></span>
+        </div>
+      </div>
+
+      <div class="caption">
+        완벽하지 않아도 괜찮습니다.<br />
+        도전했고, 배우며, 끝까지 해냈으니까요!
+      </div>
+    </section>
+
+    <footer>AI 고급교육과정 수료 소감 · 2026</footer>
+  </main>
+</body>
+</html>
